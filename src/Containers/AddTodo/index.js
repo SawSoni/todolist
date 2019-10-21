@@ -3,8 +3,8 @@ import { Formik } from 'formik';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import { H1 } from '../../Components/H1/H1.styled';
 import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElement/Input.style';
-import TodoList from '../TodoLIst/TodiList';
 import Header from '../Header/Header';
+import TodoListTable from '../TodolistTable/TodoListTable';
 
 
 class AddTodo extends Component {
@@ -13,6 +13,7 @@ class AddTodo extends Component {
     }
 
     updateStatus = (index) => {
+        console.log("update function------------------")
         let todo = this.state.todos[index];
         todo.status = 'Completed';
         this.setState((preState) => ({
@@ -58,8 +59,10 @@ class AddTodo extends Component {
                 }) => (
                     <Wrapper>
                         <Header></Header>
-                        <H1>Add your new todo</H1>
-                        <Form onSubmit={handleSubmit}> 
+                        
+                        <Wrapper width="80%" margin=" 20px auto">
+                            <H1>Add your new Todo</H1>
+                            <Form onSubmit={handleSubmit}> 
                             <Label>
                                 Date *
                                 
@@ -93,7 +96,9 @@ class AddTodo extends Component {
                             </Label>
                                 <Button type="submit" disabled={isSubmitting}>Add</Button>
                             </Form>
-                            <TodoList list={this.state.todos}></TodoList>
+                        </Wrapper>
+                            {/* <TodoList list={this.state.todos}></TodoList> */}
+                            <TodoListTable list={this.state.todos}></TodoListTable>
                     </Wrapper>
                 )}
             </Formik>
