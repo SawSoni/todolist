@@ -89,7 +89,7 @@ class Login extends Component {
                                 {touched.password &&
                                     errors.password && <Text color="red">{errors.password}</Text>}
                             </Label>
-                                <Button type="submit" disabled={isSubmitting}>Submit</Button>
+                                <Button type="submit" disabled={ isSubmitting }>Login</Button>
                             </Form>
                     
                     ) 
