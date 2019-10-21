@@ -14,8 +14,8 @@ class Login extends Component {
     render(){
         return(
             <Wrapper width="500px" margin="30px auto">
-                <NavLink to="/about">
-                     <a href="#">About</a>
+                <NavLink to="/addTodo">
+                     <div href="#">addTodo</div>
                 </NavLink>
               <Formik
                 initialValues={{firstName: '', password: ''}}
