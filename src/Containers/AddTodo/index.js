@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import Wrapper from '../../Components/Wrapper/Wrapper';
 import { H1 } from '../../Components/H1/H1.styled';
 import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElement/Input.style';
-import TodoList from '../TodoLIst/TodiList'
+import TodoList from '../TodoLIst/TodiList';
+import Header from '../Header/Header';
 
 
 class AddTodo extends Component {
@@ -56,6 +57,7 @@ class AddTodo extends Component {
                      values
                 }) => (
                     <Wrapper>
+                        <Header></Header>
                         <H1>Add your new todo</H1>
                         <Form onSubmit={handleSubmit}> 
                             <Label>
