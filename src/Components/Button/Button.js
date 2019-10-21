@@ -6,7 +6,7 @@ class Button extends  Component {
         const { text, onclick, color,width } = this.props
         return(
             <React.Fragment>
-                    <StyledButton width={width} buttonText={text} color={color} className="buttonBox" onClick={ onclick }>{ text }</StyledButton>
+                    <StyledButton width={width} buttonText={text} color={color} onClick={ onclick }>{ text }</StyledButton>
             </React.Fragment>
         )
     }
