@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useRouteMatch,
-    useParams,
-    Redirect
   } from "react-router-dom";
 
 import Login from './Containers/Login/Login';
@@ -21,7 +16,6 @@ class Routers extends Component {
         return(
             <Switch>
                 <Route path="/"  exact strict component={Login}></Route>
-                {/* <Route path="/login" component={Login}></Route> */}
                 <Route path="/about" component={About}></Route>
                 <Route path="/addTodo" component={AddTodo}></Route>
                 <Route
