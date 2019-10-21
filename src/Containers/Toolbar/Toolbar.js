@@ -24,7 +24,6 @@ class Toolbar extends Component {
     }
 
     render() { 
-        console.log("this is toolbar component-----------------",this.props);
         return (
             <Header>
                 <Nav>
