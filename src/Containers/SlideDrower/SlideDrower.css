@@ -1,0 +1,53 @@
+.side-drower {
+    height: 60%;
+    background: white;
+    box-shadow:1px 0px 7px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 124px;
+    right: 0;
+    width: 70%;
+    max-width: 400px;
+    z-index: 300;
+    /* transform:translateX(-150%); */
+    display: none;
+    /* here we are making 100px so it will not visible by default */
+    transition: transform 0.3s ease-out;
+}
+.side-drower.open {
+    /* transform:translateX(0);   */
+    display:block;
+    z-index: 500;
+    /* this is default original position */
+} 
+
+.side-drower ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.side-drower li {
+    margin: 0.5rem 0;  
+}
+.side-drower a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+
+.side-drower a:hover,
+.side-drower a:active {
+    color: green;
+}
+
+@media (min-width: 765px){
+    .side-drower {
+        display: none;
+    }
+}
+
+@media (max-width: 765px){
+  
+}
