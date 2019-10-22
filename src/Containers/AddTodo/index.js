@@ -5,6 +5,8 @@ import { H1 } from '../../Components/H1/H1.styled';
 import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElement/Input.style';
 import Header from '../Header/Header';
 import TodoListTable from '../TodolistTable/TodoListTable';
+import { connect } from "react-redux";
+import { addTodo } from '../../js/actions/index'
 
 
 class AddTodo extends Component {
@@ -12,16 +14,17 @@ class AddTodo extends Component {
        todos : [], 
     }
 
-    updateStatus = (index) => {
+  /*   updateStatus = (index) => {
         console.log("update function------------------")
         let todo = this.state.todos[index];
         todo.status = 'Completed';
         this.setState((preState) => ({
             todos: [...preState.todos]
         }))
-    }
+    } */
 
     render(){
+        let todolist = this.props.todos.todos.map((i) => i.values);
         return(
             <Formik
             initialValues={{date: '', task: ''}}
@@ -40,10 +43,12 @@ class AddTodo extends Component {
 
             onSubmit={(values, { resetForm,  setSubmitting }) => {
                 values.status = 'Pending';
-                values.updateStatus = this.updateStatus;
-                this.setState((preState) => ({
+                // values.updateStatus = this.updateStatus;
+               /*  this.setState((preState) => ({
                     todos: [...preState.todos, values]
-                }))
+                })) */
+                const {addTodo} = this.props
+                addTodo({values})
                 resetForm()
                 setSubmitting(false);
                 }} 
@@ -97,8 +102,8 @@ class AddTodo extends Component {
                                 <Button type="submit" disabled={isSubmitting}>Add</Button>
                             </Form>
                         </Wrapper>
-                            {/* <TodoList list={this.state.todos}></TodoList> */}
-                            <TodoListTable list={this.state.todos}></TodoListTable>
+                       { todolist.length > 0 &&
+                            <TodoListTable list={todolist}></TodoListTable>}
                     </Wrapper>
                 )}
             </Formik>
@@ -106,4 +111,15 @@ class AddTodo extends Component {
     }
 }
 
-export default AddTodo
+function mapDispatchToprops(dispatch) {
+    return {
+        addTodo: todo => dispatch(addTodo(todo))
+    }
+}
+
+const mapStateToProps = state => ({ todos: state })
+
+const AddTodo1 = connect(mapStateToProps, mapDispatchToprops ) (AddTodo)
+
+
+export default AddTodo1
