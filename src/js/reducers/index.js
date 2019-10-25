@@ -1,16 +1,20 @@
-import { ADD_TODO,UPDATE_TODO } from "../constants/action-types";
-const initialState = {
-    todos: []
-  };
+import { ADD_TODO, UPDATE_TODO } from "../constants/action-types";
 
-  function rootReducer(state = initialState, action) {
-    if (action.type === ADD_TODO) {
-      return Object.assign({}, state, {
-        todos: state.todos.concat(action.payload)
-      });
-      }
-    return state;
-  };
+function rootReducer(state = [], action) {
+  if (action.type === ADD_TODO) {
+    const ar = [...state, action.payload];
+    return ar;
+  }
+  if (action.type === UPDATE_TODO) {
+    console.log("this is update reducers", action.payload);
+    let oldItem = state.find((item) => item.id === action.payload.id );
+    let index = state.indexOf(oldItem);
+    let newState = [...state];
+    newState[index] = action.payload;
+    return newState;
+  }
+  return state;
+};
 
 
 export default rootReducer;
