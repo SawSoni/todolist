@@ -24,7 +24,7 @@ class ToDoListTable extends Component {
             <Col>{item.date}</Col>
             <Col>{item.task}</Col>
             {<Col>{item.status}</Col>}
-            {<Col><Button text="Done" color="#ABC" onclick={() => item.updateStatus(index)}></Button></Col>}
+            {<Col><Button text="Done" color="#ABC" onclick={() => item.updateStatus(item.id)}></Button></Col>}
         </Row>)
         return(
             <RowContainer>
