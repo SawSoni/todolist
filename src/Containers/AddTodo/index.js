@@ -6,25 +6,24 @@ import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElem
 import Header from '../Header/Header';
 import TodoListTable from '../TodolistTable/TodoListTable';
 import { connect } from "react-redux";
-import { addTodo } from '../../js/actions/index'
+import { addTodo, updateTodo } from '../../js/actions/index'
+import uuidv1 from "uuid";
 
 
 class AddTodo extends Component {
-    state = {
-       todos : [], 
+    
+    updateStatus = (id) => {
+        const {todos, updateTodo} = this.props; 
+        let item = todos.filter( (todo) => todo.id === id);
+        let todo = item[0];
+        todo.status = 'Completed';
+        console.log("this is todo", todo);
+        updateTodo(todo);
     }
 
-  /*   updateStatus = (index) => {
-        console.log("update function------------------")
-        let todo = this.state.todos[index];
-        todo.status = 'Completed';
-        this.setState((preState) => ({
-            todos: [...preState.todos]
-        }))
-    } */
-
     render(){
-        let todolist = this.props.todos.todos.map((i) => i.values);
+        const {todos} = this.props;
+        console.log(todos); 
         return(
             <Formik
             initialValues={{date: '', task: ''}}
@@ -41,14 +40,16 @@ class AddTodo extends Component {
                 return errors;
             }}
 
-            onSubmit={(values, { resetForm,  setSubmitting }) => {
-                values.status = 'Pending';
-                // values.updateStatus = this.updateStatus;
-               /*  this.setState((preState) => ({
-                    todos: [...preState.todos, values]
+            onSubmit={(todo, { resetForm,  setSubmitting }) => {
+                todo.status = 'Pending';
+                todo.updateStatus = this.updateStatus;
+                const id = uuidv1();
+                todo.id = id;
+              /*   this.setState((preState) => ({
+                    todos: [...preState.todos, todo]
                 })) */
                 const {addTodo} = this.props
-                addTodo({values})
+                addTodo({todo})
                 resetForm()
                 setSubmitting(false);
                 }} 
@@ -102,8 +103,8 @@ class AddTodo extends Component {
                                 <Button type="submit" disabled={isSubmitting}>Add</Button>
                             </Form>
                         </Wrapper>
-                       { todolist.length > 0 &&
-                            <TodoListTable list={todolist}></TodoListTable>}
+                       { todos.length > 0 &&
+                            <TodoListTable list={todos}></TodoListTable>}
                     </Wrapper>
                 )}
             </Formik>
@@ -111,15 +112,16 @@ class AddTodo extends Component {
     }
 }
 
-function mapDispatchToprops(dispatch) {
+function mapDispatchToProps(dispatch) {
     return {
-        addTodo: todo => dispatch(addTodo(todo))
+        addTodo: ({todo}) => dispatch(addTodo(todo)),
+        updateTodo: (todo) => dispatch(updateTodo(todo))
     }
 }
 
 const mapStateToProps = state => ({ todos: state })
 
-const AddTodo1 = connect(mapStateToProps, mapDispatchToprops ) (AddTodo)
+const connectedTodo = connect(mapStateToProps, mapDispatchToProps ) (AddTodo)
 
 
-export default AddTodo1
+export default connectedTodo
