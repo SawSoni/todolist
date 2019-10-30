@@ -40,15 +40,6 @@ class PreLoginHeader extends Component {
         }
         return (
             <Wrapper>
-                <Nav>
-                    <Wrapper>
-                        <span>logo</span>
-                    </Wrapper>
-                    <Spacer/>
-                    <Wrapper>
-                        <Button type="button" text="EN"/>
-                    </Wrapper>
-                </Nav>
                 <Nav2>
                     <Toolbar drowerClickHandler={this.drowerToggleClickHandler} />
                     <SlideDrower show={sideDrawerOpen}/>
