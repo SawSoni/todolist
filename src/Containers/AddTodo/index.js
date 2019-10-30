@@ -14,7 +14,7 @@ class AddTodo extends Component {
     
     updateStatus = (id) => {
         const {todos, updateTodo} = this.props; 
-        let item = todos.filter( (todo) => todo.id === id);
+        let item = todos.todoReducer.filter( (todo) => todo.id === id);
         let todo = item[0];
         todo.status = 'Completed';
         console.log("this is todo", todo);
@@ -23,7 +23,7 @@ class AddTodo extends Component {
 
     render(){
         const {todos} = this.props;
-        console.log(todos); 
+        const todoData = todos.todoReducer; 
         return(
             <Formik
             initialValues={{date: '', task: ''}}
@@ -45,9 +45,6 @@ class AddTodo extends Component {
                 todo.updateStatus = this.updateStatus;
                 const id = uuidv1();
                 todo.id = id;
-              /*   this.setState((preState) => ({
-                    todos: [...preState.todos, todo]
-                })) */
                 const {addTodo} = this.props
                 addTodo({todo})
                 resetForm()
@@ -103,8 +100,8 @@ class AddTodo extends Component {
                                 <Button type="submit" disabled={isSubmitting}>Add</Button>
                             </Form>
                         </Wrapper>
-                       { todos.length > 0 &&
-                            <TodoListTable list={todos}></TodoListTable>}
+                       { todoData.length > 0 &&
+                            <TodoListTable list={todoData}></TodoListTable>}
                     </Wrapper>
                 )}
             </Formik>
