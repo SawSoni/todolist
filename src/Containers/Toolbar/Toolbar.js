@@ -42,6 +42,9 @@ class Toolbar extends Component {
                             <Link to="/about">
                                 <b><Li>AboutUs</Li></b>
                             </Link>
+                            <Link to="/user">
+                                <b><Li>Users</Li></b>
+                            </Link>
                             
                         </Ul>
                     </UlParent>
