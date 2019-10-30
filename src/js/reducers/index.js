@@ -1,6 +1,6 @@
 import { ADD_TODO, UPDATE_TODO } from "../constants/action-types";
 
-function rootReducer(state = [], action) {
+function todoReducer(state = [], action) {
   if (action.type === ADD_TODO) {
     const ar = [...state, action.payload];
     return ar;
@@ -17,5 +17,5 @@ function rootReducer(state = [], action) {
 };
 
 
-export default rootReducer;
+export default todoReducer;
 
