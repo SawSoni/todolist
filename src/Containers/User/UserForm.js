@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
 import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElement/Input.style';
 import { Formik } from 'formik';
-import { addUser } from './actions';
+import { addUser, getUsers, addUserDemo } from './actions';
 import { connect } from "react-redux";
+import Wrapper from '../../Components/Wrapper/Wrapper';
+import ShowUsers from './showUsers';
+
+
 
 class UserForm extends Component {
   
-
+    componentDidMount(){
+        const { getUsers } = this.props;
+        getUsers();
+    }
     render(){
+        console.log("what is the props here", this.props.users.userReducer);
         return(
-            
+            <Wrapper width="50%" margin="20px auto">
+                <h1>User Form</h1>
               <Formik
-                initialValues={{title: '', body: ''}}
+                initialValues={{name: '', userName: ''}}
 
                 validate={values => {
                     let errors = {};
-                    if (!values.title) {
-                        errors.title= 'Please fill your name';
+                    if (!values.name) {
+                        errors.name= 'Please fill your name';
                     }
 
-                    if(!values.body){
-                        errors.body = "please give you message";
+                    if(!values.userName){
+                        errors.userName = "please give you message";
                     }
                     return errors;
                 }}
 
                 onSubmit={(values, { resetForm,  setSubmitting }) => {
-                    const { addUser } = this.props;
+                    const { addUser, addUserDemo } = this.props;
                     addUser(values);
+                    addUserDemo();
                     console.log("userData", values)
                     resetForm()
                     setSubmitting(false);
@@ -44,30 +54,33 @@ class UserForm extends Component {
                         handleBlur,
                         values
                     }) => (
-
                        
                             <Form onSubmit={handleSubmit}> 
                             <Label>
-                                Title *
-                                
+                                <Wrapper width="70px"  margin="10px 5px">
+                                name *
+                                </Wrapper>
                                 <StyleInput
-                                    border={errors.title && '1px solid red'}
-                                    name="title"
-                                    placeholder="title"
+                                    border={errors.name && '1px solid red'}
+                                    name="name"
+                                    placeholder="name"
                                     type="text"
-                                    value={values.title}
+                                    value={values.name}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
-                                {errors.title && <Text color="red">{errors.title}</Text>}
+                                {errors.name && <Text color="red">{errors.name}</Text>}
                             </Label>
                             <Label>
-                                Message *
+                            <Wrapper width="70px"  margin="10px 5px">
+                                 UserName *
+                             </Wrapper>
+                               
                                 <StyleInput
-                                    name="body"
+                                    name="userName"
                                     placeholder="message"
                                     type="text"
-                                    value={values.body}
+                                    value={values.userName}
                                     border={
                                         touched.password && errors.password && '1px solid red'
                                     }
@@ -75,16 +88,20 @@ class UserForm extends Component {
                                     onBlur={handleBlur}
                                     
                                     />
-                                {touched.body &&
-                                    errors.body && <Text color="red">{errors.body}</Text>}
+                                {touched.userName &&
+                                    errors.userName && <Text color="red">{errors.userName}</Text>}
                             </Label>
                                 <Button type="submit" disabled={ isSubmitting }>Submit</Button>
                             </Form>
+                       
                     ) 
                 }
                     
         </Formik>
-    
+        {this.props.users.userReducer.length > 10 &&
+        <ShowUsers users={this.props.users.userReducer}></ShowUsers>
+        }
+     </Wrapper>
 
         )
     }
@@ -96,6 +113,8 @@ const mapStateToProps = state => ({ users: state })
 function mapDispatchToProps(dispatch) {
     return {
         addUser: (user) => dispatch(addUser(user)),
+        getUsers: () => dispatch(getUsers()),
+        addUserDemo: () => dispatch(addUserDemo())
     }
 }
 
