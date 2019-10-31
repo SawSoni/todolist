@@ -1,14 +1,21 @@
-import { ADD_USER } from './constants';
+import { ADD_USER, GET_USERS_ASYNC, ADD_USER_DEMO_ASYNC } from './constants';
 
-function userReducer(state = [], payload){
-    switch(payload.type) {
+function userReducer(state = [], action){
+    switch(action.type) {
         case ADD_USER:
-        const newState = [...state, payload.payload];
+        const newState = [...state, action.payload];
         return newState;
-        break;
-    default:
+
+        case GET_USERS_ASYNC:
+        console.log("user get data---------------",action.payload)
+        return action.payload; 
+        
+        
+        case ADD_USER_DEMO_ASYNC:
+        console.log("add user data demo--------------------",action.payload);
+        default:
     }
-    return state;
+     return state;
 }
 
 export default userReducer
