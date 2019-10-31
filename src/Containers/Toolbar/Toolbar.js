@@ -38,7 +38,9 @@ class Toolbar extends Component {
                     <UlParent>
                         <Ul>
                             <Li>Home</Li>
-                            <Li>ToDoList</Li>
+                            <Link to="/addToDo">
+                                <b><Li>AddToDo</Li></b>
+                            </Link>
                             <Link to="/about">
                                 <b><Li>AboutUs</Li></b>
                             </Link>
