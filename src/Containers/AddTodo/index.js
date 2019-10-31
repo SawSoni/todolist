@@ -67,7 +67,9 @@ class AddTodo extends Component {
                             <H1>Add your new Todo</H1>
                             <Form onSubmit={handleSubmit}> 
                             <Label>
-                                Date *
+                            <Wrapper width="70px"  margin="10px 5px">
+                             Date *
+                             </Wrapper>
                                 
                                 <StyleInput
                                     border={errors.firstName && '1px solid red'}
@@ -81,7 +83,9 @@ class AddTodo extends Component {
                                 {errors.date && <Text color="red">{errors.date}</Text>}
                             </Label>
                             <Label>
-                                Task *
+                            <Wrapper width="70px"  margin="10px 5px">
+                            Task *
+                             </Wrapper>
                                 <StyleInput
                                     name="task"
                                     placeholder="Your Task"
