@@ -4,8 +4,8 @@ import Toolbar from '../Toolbar/Toolbar'
 import SlideDrower from '../SlideDrower/SlideDrower'
 import BackDrop from '../BackDrop/BackDrop'
 import Wrapper from '../../Components/Wrapper/Wrapper'
-import { Nav, Spacer, Nav2 } from './Header.styled';
-import Button from '../../Components/Button/Button';
+import { Nav2 } from './Header.styled';
+
 
 class PreLoginHeader extends Component {
     constructor(props) {
