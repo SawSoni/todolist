@@ -8,6 +8,7 @@ import Login from './Containers/Login/Login';
 import About from './Containers/About/About';
 import ConnectedTodo from './Containers/AddTodo/index';
 import User from './Containers/User/index';
+import UsingHook from './Containers/Hook_Learning/Example'
 
 
 
@@ -20,6 +21,7 @@ class Routers extends Component {
                 <Route path="/about" component={About}></Route>
                 <Route path="/addTodo" component={ConnectedTodo}></Route>
                 <Route path="/user" component={User}></Route>
+                <Route path="/hooks" component={ UsingHook   }/>
                 <Route
                  render={function () {
                      return <h1>Not Found</h1>;
