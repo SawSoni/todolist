@@ -13,6 +13,7 @@ function userReducer(state = [], action){
         
         case ADD_USER_DEMO_ASYNC:
         console.log("add user data demo--------------------",action.payload);
+        break;
         default:
     }
      return state;
