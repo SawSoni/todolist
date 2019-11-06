@@ -1,5 +1,5 @@
-import store from "../js/store/index";
-import { addTodo } from "../js/actions/index";
+import store from "../Containers/store/index";
+import { addTodo } from "../Containers/AddTodo/actions/index";
 
 window.store = store;
 window.addTodo = addTodo;

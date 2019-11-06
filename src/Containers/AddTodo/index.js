@@ -4,9 +4,9 @@ import Wrapper from '../../Components/Wrapper/Wrapper';
 import { H1 } from '../../Components/H1/H1.styled';
 import { StyleInput, Button, Form, Label, Text } from '../../Components/FormElement/Input.style';
 import Header from '../Header/Header';
-import TodoListTable from '../TodolistTable/TodoListTable';
+import TodoListTable from './TodolistTable/TodoListTable';
 import { connect } from "react-redux";
-import { addTodo, updateTodo } from '../../js/actions/index'
+import { addTodo, updateTodo } from './actions/index'
 import uuidv1 from "uuid";
 
 

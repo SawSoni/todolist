@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Header.styled.js';
-import Toolbar from '../Toolbar/Toolbar'
-import SlideDrower from '../SlideDrower/SlideDrower'
-import BackDrop from '../BackDrop/BackDrop'
+import Toolbar from './Toolbar/Toolbar'
+import SlideDrower from './SlideDrower/SlideDrower'
+import BackDrop from './BackDrop/BackDrop'
 import Wrapper from '../../Components/Wrapper/Wrapper'
 import { Nav2 } from './Header.styled';
 

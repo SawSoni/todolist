@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Wrapper from '../../Components/Wrapper/Wrapper'
+import Wrapper from '../../../Components/Wrapper/Wrapper'
 import { HeaderRow, Col, Row, RowContainer, FooterRow } from './TodoListTable.styled';
-import Button from '../../Components/Button/Button';
+import Button from '../../../Components/Button/Button';
 
 class ToDoListTable extends Component {
     state = {
