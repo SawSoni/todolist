@@ -41,7 +41,7 @@ class PreLoginHeader extends Component {
         return (
             <Wrapper>
                 <Nav2>
-                    <Toolbar drowerClickHandler={this.drowerToggleClickHandler} />
+                    <Toolbar drowerClickHandler={this.drowerToggleClickHandler} todoData={this.props}/>
                     <SlideDrower show={sideDrawerOpen}/>
                     {backDrop}
                 </Nav2>
