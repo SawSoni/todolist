@@ -61,7 +61,7 @@ class AddTodo extends Component {
                      values
                 }) => (
                     <Wrapper>
-                        <Header></Header>
+                        <Header todoData={ todoData }></Header>
                         
                         <Wrapper width="80%" margin=" 20px auto">
                             <H1>Add your new Todo</H1>
