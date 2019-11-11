@@ -3,8 +3,9 @@ import {StyleInput} from './Input.styled'
 
 class Input extends Component {
     render(){
+        const { placeholder, type } = this.props;
         return(
-            <StyleInput></StyleInput>  
+            <StyleInput type={ type } placeholder={ placeholder }></StyleInput>  
         )
     }
 }
