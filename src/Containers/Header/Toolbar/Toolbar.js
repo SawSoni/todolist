@@ -4,6 +4,7 @@ import './Toolbar.styled.js';
 import { Link } from 'react-router-dom';
 import { Header, Nav,ToggleBar, UlParent, Ul, Li } from './Toolbar.styled';
 import Button from '../../../Components/Button/Button';
+import Input from '../../../Components/NormalInput/Input'
 // import { loggedIn } from "../../js/actions/index";
 // import { connect } from "react-redux";
 
@@ -16,8 +17,12 @@ class Toolbar extends Component {
         }
     }
 
-    handleLoggedIn () {
-        console.log("user has clicked login button----------------");
+    handleChange = (e) =>  {
+        console.log("user has clicked search input--------------1--",e.target.value);
+        const todoData = this.props;
+        const findTargetObjByStatus = todoData.todoData.todoData.filter((item) => item.status === e.target.value);
+        console.log("what is the object name ------",todoData.todoData.todoData);
+        console.log("this is the object", findTargetObjByStatus);
         /* this.setState((preState) => ({
             loggedIn : !preState.loggedIn
         })) */
@@ -34,6 +39,8 @@ class Toolbar extends Component {
                          {/* <div className="loginBtn"><button >Login</button></div> */}
                          <Button text="Login"></Button>
                     </Link>
+
+                    <Input type="text" name="serchTodo"  placeholder="SearchTodo" onchange={this.handleChange}></Input>
                     
                     <UlParent>
                         <Ul>
