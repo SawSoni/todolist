@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import './col.css';
 
 export const HeaderRow = styled.div`
     display: flex;
@@ -15,10 +16,17 @@ export const Row = styled.div`
     border-top: 1px solid #000;
 `
 export const Col = styled.div`
-    flex: 1 0 20%;
+    flex: 1 0 6%;
     padding: 10px;
     border-right: 1px solid #000;
+    ${(props) => props.color &&
+    css`
+     color: ${props => props.color === 'Pending' ? 'red' : 'green'}
+    `
+    }
 `
+
+
 export const FooterRow = styled.div`
     display: flex;
     flex-flow: row wrap;
