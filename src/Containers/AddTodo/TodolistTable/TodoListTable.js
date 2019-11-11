@@ -19,13 +19,17 @@ class ToDoListTable extends Component {
     }
 
     createTodoList = () => {
-        const { list } = this.props;
-         const todoList = list.map((item, index) => <Row key={index}>
+
+        const getRow = (item, index) => {
+            return <Row key={index}>
             <Col>{item.date}</Col>
             <Col>{item.task}</Col>
-            {<Col>{item.status}</Col>}
+            {<Col color={item.status}>{item.status}</Col>}
             {<Col><Button text="Done" color="#ABC" onclick={() => item.updateStatus(item.id)}></Button></Col>}
-        </Row>)
+         </Row>
+        }
+        const { list } = this.props;
+         const todoList = list.map((item, index) => getRow(item, index))
         return(
             <RowContainer>
                 {todoList}
